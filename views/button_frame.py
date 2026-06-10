@@ -1,76 +1,149 @@
-# Import customtkinter de tao giao dien
 import customtkinter as ctk
 
-
-# Tao lop ButtonFrame, quan ly cac nut chuc nang
 class ButtonFrame(ctk.CTkFrame):
-    # Ham khoi tao ButtonFrame
+
     def __init__(
+
         self,
+
         parent,
+
         colors,
+
         add_callback,
+
         update_callback,
+
         delete_callback,
+
         clear_callback,
-        summary_callback
+
+        summary_callback,
+
+        import_csv_callback,
+
+        export_csv_callback
+
     ):
-        # Goi ham khoi tao cua CTkFrame
+
         super().__init__(parent, fg_color=colors["frame_color"], corner_radius=14)
 
-        # Luu cac ham callback
         self.add_callback = add_callback
+
         self.update_callback = update_callback
+
         self.delete_callback = delete_callback
+
         self.clear_callback = clear_callback
+
         self.summary_callback = summary_callback
 
-        # Tao cac nut
+        self.import_csv_callback = import_csv_callback
+
+        self.export_csv_callback = export_csv_callback
+
         self.create_widgets()
 
-    # Ham tao cac nut chuc nang
     def create_widgets(self):
-        # Cho 5 cot co gian deu
-        for i in range(5):
+
+        for i in range(7):
+
             self.grid_columnconfigure(i, weight=1)
 
-        # Tao nut them giao dich, khi bam se mo cua so them
         add_button = ctk.CTkButton(self, text="Thêm giao dịch", height=40, command=self.add_callback)
+
         add_button.grid(row=0, column=0, padx=10, pady=12, sticky="ew")
 
-        # Tao nut sua thong tin, khi bam se mo cua so sua
         update_button = ctk.CTkButton(self, text="Sửa thông tin", height=40, command=self.update_callback)
+
         update_button.grid(row=0, column=1, padx=10, pady=12, sticky="ew")
 
-        # Tao nut xoa thong tin
         delete_button = ctk.CTkButton(
+
             self,
+
             text="Xóa thông tin",
+
             height=40,
-            fg_color="#c0392b",
-            hover_color="#a93226",
+
+            fg_color="#2b4bc0",
+
+            hover_color="#2638a9",
+
             command=self.delete_callback
+
         )
+
         delete_button.grid(row=0, column=2, padx=10, pady=12, sticky="ew")
 
-        # Tao nut bo chon dong dang chon
         clear_button = ctk.CTkButton(
+
             self,
+
             text="Bỏ chọn",
+
             height=40,
+
             fg_color="#4b5563",
+
             hover_color="#374151",
+
             command=self.clear_callback
+
         )
+
         clear_button.grid(row=0, column=3, padx=10, pady=12, sticky="ew")
 
-        # Tao nut xem tong quan tai chinh
         summary_button = ctk.CTkButton(
+
             self,
+
             text="Xem tổng quan",
+
             height=40,
+
             fg_color="#2563eb",
+
             hover_color="#1d4ed8",
+
             command=self.summary_callback
+
         )
+
         summary_button.grid(row=0, column=4, padx=10, pady=12, sticky="ew")
+
+        import_csv_button = ctk.CTkButton(
+
+            self,
+
+            text="Nhập CSV",
+
+            height=40,
+
+            fg_color="#7c3aed",
+
+            hover_color="#6d28d9",
+
+            command=self.import_csv_callback
+
+        )
+
+        import_csv_button.grid(row=0, column=5, padx=10, pady=12, sticky="ew")
+
+        export_csv_button = ctk.CTkButton(
+
+            self,
+
+            text="Xuất CSV",
+
+            height=40,
+
+            fg_color="#0891b2",
+
+            hover_color="#0e7490",
+
+            command=self.export_csv_callback
+
+        )
+
+        export_csv_button.grid(row=0, column=6, padx=10, pady=12, sticky="ew")
